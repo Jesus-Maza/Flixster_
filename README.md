@@ -11,7 +11,7 @@ Flix is an app that allows users to browse movies from the [a07e22bc18f5cb106bfe
 
 #### BONUS
 
-- [ ] Implement a shared element transition when user clicks into the details of a movie (1 point).
+- [x] Implement a shared element transition when user clicks into the details of a movie (1 point).
 - [x] Trailers for popular movies are played automatically when the movie is selected (1 point).
   - [x] When clicking on a popular movie (i.e. a movie voted for more than 5 stars) the video should be played immediately.
   - [ ] Less popular videos rely on the detailed page should show an image preview that can initiate playing a YouTube video.
@@ -25,7 +25,7 @@ Flix is an app that allows users to browse movies from the [a07e22bc18f5cb106bfe
 
 ### Notes
 
-Describe any challenges encountered while building the app.
+The title has a share element transition. I tried doing the image but since my detail acitivity doesn't have one I was not able to use it.
 
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
