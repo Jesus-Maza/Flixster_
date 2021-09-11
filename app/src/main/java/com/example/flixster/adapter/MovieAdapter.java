@@ -1,5 +1,6 @@
 package com.example.flixster.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,9 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.Rotate;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.flixster.DetailActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
@@ -81,7 +86,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             else{
                 imageURL = movie.getPosterPath();
             }
-            Glide.with(context).load(imageURL).into(ivPoster);
+            Glide.with(context)
+                    .load(imageURL)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .transform(new RoundedCorners(60))
+                    .into(ivPoster);
+            //Glide.with(context).load(imageURL).into(ivPoster);
 
             //1.Register click listener on the whole row
             //2.Navigate to a new activity on tap
@@ -90,7 +101,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 public void onClick(View view) {
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("movie", Parcels.wrap(movie));
-                    context.startActivity(i);
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity) context, (View)tvTitle, "profile");
+                    context.startActivity(i,options.toBundle());
                 }
             });
         }
