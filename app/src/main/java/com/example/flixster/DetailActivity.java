@@ -81,7 +81,9 @@ public class DetailActivity extends YouTubeBaseActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("DetailActivity", "onInitialSuccess");
                 if ( rating > 5 ) {
+                    youTubePlayer.setFullscreen(true);
                     youTubePlayer.loadVideo(youtubeKey);
+                    // youTubePlayer.play();
                 }
                 else{
                     youTubePlayer.cueVideo(youtubeKey);
